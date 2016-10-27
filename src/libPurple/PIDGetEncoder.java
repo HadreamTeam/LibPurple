@@ -15,23 +15,33 @@ public class PIDGetEncoder implements PIDSource{
 		this.returnRate = returnRate;
 	}
 	
-	@Override
+	
 	public double pidGet() {
 		
 		return returnRate ? encoder.getRate() : encoder.getDistance();
 	}
 
-	@Override
-	// TODO complete this fuck
-	public void setPIDSourceType(PIDSourceType pidSource) {
-		// TODO Auto-generated method stub		
-	}
-
-	@Override
+	
 	// TODO complete this fuck
 	public PIDSourceType getPIDSourceType() {
 		// TODO Auto-generated method stub
-		return null;
+		return returnRate ? PIDSourceType.kRate : PIDSourceType.kDisplacement;
+//		return PIDSourceType.kDisplacement;
+	}
+	
+	public Encoder3075 getEncoder()
+	{
+		return encoder;
+	}
+	
+	public void setReturnRate(boolean b)
+	{
+		returnRate = b;
+	}
+
+	
+	public void setPIDSourceType(PIDSourceType pidSource) {
+		// TODO Auto-generated method stub
 	}
 	
 	

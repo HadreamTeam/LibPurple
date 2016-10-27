@@ -15,7 +15,7 @@ public class AnalogPressureSensor {
 	public double readPressure()
 	{
 		double Vout = input.getVoltage();
-		double p = 250 * (Vout / VCC) - 25;
+		double p = 275 * (Vout / VCC) - 27.5;
 		return p;
 	}
 

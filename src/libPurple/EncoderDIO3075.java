@@ -25,7 +25,6 @@ public class EncoderDIO3075 extends Encoder implements Encoder3075{
 		this.pidGetRate = pidGetRate;
 	}
 
-	@Override
 	public void invert(boolean inverted) {
 		// TODO Auto-generated method stub
 		super.setReverseDirection(inverted);

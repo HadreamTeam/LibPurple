@@ -6,27 +6,32 @@ public class Joystick3075 extends Joystick
 		super(port);
 		// TODO Auto-generated constructor stub
 	}
-	public static double deadband =0.1;
-	public static int power =1;
+	public static double deadband = 0;
+	public static int power = 1;
 	
-	public double xget()
+	public double xGet()
 	{
-		return  super.getX();
+		return Math.pow(utils.deadband(super.getX(), deadband), power);
 		
 	}
 	public double yGet()
 	{
-		 return super.getY();
+		return Math.pow(utils.deadband(super.getY(), deadband), power);
 	}
 	
+	public static double getDeadband() {
+		return deadband;
+	}
 	
-//	public double axisget(int axis)
-//	{
-//		double value =super.getRawAxis(axis);
-//		
-//	}
-	public double get()
-	{
-		return 0;
+	public static void setDeadband(double deadband) {
+		Joystick3075.deadband = deadband;
+	}
+	
+	public static int getPower() {
+		return power;
+	}
+	
+	public void setPower(int power) {
+		Joystick3075.power = power;
 	}
 }

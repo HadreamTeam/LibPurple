@@ -13,7 +13,6 @@ public class PIDOutput3075 implements PIDOutput{
 	}
 
 
-	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
 		

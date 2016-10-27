@@ -4,6 +4,7 @@ import org.usfirst.frc.team3075.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class utils
 {
@@ -11,7 +12,7 @@ public class utils
 	// Takes two numbers and check if they are closer than dif
 	public static boolean inRange(double value, double target, double deviation)
 	{
-		return Math.abs(value-target)<=deviation;
+		return Math.abs(value-target) <= deviation;
 	}
 	
 	public static double deadband(double value, double deadband)
@@ -114,11 +115,21 @@ public class utils
 		return arr;
 	}
 	
-//	public static double calculateDistance(Point[] p)
-//	{
-//		h1 = 
-//		
-//	}
+	/**
+	 * This is a requires like the Command's one but for any object.
+	 * The given Command will be canceled if the given object is null.
+	 * Use inside a command example: requires(this, Components.systemStick);
+	 * @param command the command that should be canceld of the object is null.
+	 * @param object the object that is required.
+	 * Contact Shahar for help.
+	 */
+	public static void requires(Command command, Object object)
+	{
+		if(object == null)
+			command.cancel();
+	}
+	
+	
 	
 //	public static double[] driveCurve(double radius, double distance, double robotWidth, boolean no)
 //	{

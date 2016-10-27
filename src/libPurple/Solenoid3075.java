@@ -11,6 +11,11 @@ public class Solenoid3075 extends DoubleSolenoid{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Solenoid3075(int moduleNum, int forwardChannel, int reverseChannel) {
+		super(moduleNum, forwardChannel, reverseChannel);
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Command ToggleCommand()
 	{
 		return new Toggle(this);
@@ -24,6 +29,16 @@ public class Solenoid3075 extends DoubleSolenoid{
 	public Command CloseCommand()
 	{
 		return new OpenClose(this, false);
+	}
+	
+	public Command OffCommand()
+	{
+		return new Off(this);
+	}
+	
+	public Command TimedCycle(double timeOut)
+	{
+		return new TimedCycle(this, timeOut);
 	}
 }
 
@@ -82,5 +97,61 @@ class OpenClose extends Command {
     }
 
     protected void interrupted() {
+    }
+}
+
+class TimedCycle extends Command {
+
+	DoubleSolenoid mySol;
+	
+    public TimedCycle(DoubleSolenoid ds, double timeOut) {
+    	mySol = ds;
+    	setTimeout(timeOut);
+    }
+
+    protected void initialize() {
+    	mySol.set(DoubleSolenoid.Value.kForward);
+    }
+
+    protected void execute() {
+    }
+
+    protected boolean isFinished() {
+        return isTimedOut();
+    }
+
+    protected void end() {
+    	mySol.set(DoubleSolenoid.Value.kReverse);
+    }
+
+    protected void interrupted() {
+    }
+}
+
+class Off extends Command{
+DoubleSolenoid mySol;
+	
+    public Off(DoubleSolenoid ds) {
+    	mySol = ds;
+    }
+
+    protected void initialize() {
+    	mySol.set(DoubleSolenoid.Value.kOff);
+    }
+
+    protected void execute() {
+    	
+    }
+
+    protected boolean isFinished() {
+        return true;
+    }
+
+    protected void end() {
+    	
+    }
+
+    protected void interrupted() {
+    	
     }
 }

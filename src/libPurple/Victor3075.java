@@ -40,13 +40,13 @@ public class Victor3075 extends Victor implements SpeedController3075{
 		this.inverted = isInverted ? -1 : 1;
 	}
 
-	@Override
+	
 	public void setMotorBound(double newMotorBound) {
 		// TODO Auto-generated method stub
 		motorBound = newMotorBound;
 	}
 
-	@Override
+	
 	public void setSlave(SpeedController3075 slave) {
 		this.slave = (Victor3075) slave;
 	}

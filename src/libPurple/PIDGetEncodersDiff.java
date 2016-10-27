@@ -21,20 +21,19 @@ public class PIDGetEncodersDiff implements PIDSource{
 		distanceRight = -right.getError();
 	}
 	
-	@Override
 	public double pidGet() {
 		
 		return left.getError()/distanceLeft - right.getError()/distanceRight;
 	}
 
-	@Override
+	
 	// TODO complete this fuck
 	public void setPIDSourceType(PIDSourceType pidSource) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	// TODO complete this fuck
 	public PIDSourceType getPIDSourceType() {
 		// TODO Auto-generated method stub
